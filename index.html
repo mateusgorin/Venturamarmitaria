@@ -10,7 +10,7 @@
   <meta name="author" content="Marmitaria Ventura">
   
   <!-- PWA / Mobile App -->
-  <link rel="manifest" href="/manifest.json?v=3">
+  <link rel="manifest" href="/manifest.json?v=4">
   <meta name="theme-color" content="#fffaf8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -182,6 +182,15 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
+    }
+
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    .animate-bounce-subtle {
+      animation: bounceSubtle 2s infinite ease-in-out;
     }
 
     .group-hover\:bounce {

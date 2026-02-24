@@ -10,7 +10,9 @@ import {
   ArrowLeft,
   X,
   Clock,
-  Download
+  Download,
+  Share,
+  PlusSquare
 } from 'lucide-react';
 
 // Tile Button Component
@@ -85,8 +87,19 @@ const OpenStatus: React.FC = () => {
 const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange }) => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallBtn, setShowInstallBtn] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
+    // Detect iOS
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const ios = /iphone|ipad|ipod/.test(userAgent);
+    setIsIOS(ios);
+
+    // Detect if already installed
+    const standalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
+    setIsStandalone(standalone);
+
     const handler = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -94,7 +107,6 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
     };
 
     window.addEventListener('beforeinstallprompt', handler);
-
     return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
@@ -114,7 +126,26 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
 
   return (
     <div className="flex flex-col items-center min-h-screen px-8 pb-12 fade-in" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}>
-      {/* PWA Install Button */}
+      {/* iOS Install Instruction */}
+      {isIOS && !isStandalone && (
+        <div className="w-full max-w-sm mb-10 bg-white/80 backdrop-blur-md border border-pink-100 p-6 rounded-3xl shadow-xl shadow-pink-500/5 animate-bounce-subtle">
+          <div className="flex items-start gap-4">
+            <div className="bg-pink-50 p-3 rounded-2xl text-pink-500">
+              <Download size={24} />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-[13px] font-black uppercase tracking-wider text-gray-800 mb-2">Instalar no iPhone</h3>
+              <p className="text-[11px] text-gray-500 leading-relaxed font-medium">
+                Toque no ícone <span className="inline-flex items-center mx-1 text-pink-500"><Share size={14} /></span> 
+                depois em <span className="inline-flex items-center mx-1 text-pink-500"><PlusSquare size={14} /></span> 
+                <span className="font-bold">"Adicionar à Tela de Início"</span> para ter o app.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* PWA Install Button (Android/Desktop) */}
       {showInstallBtn && (
         <button 
           onClick={handleInstallClick}
