@@ -85,40 +85,22 @@ const OpenStatus: React.FC = () => {
 
 // Home Screen
 const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange }) => {
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [showInstallBtn, setShowInstallBtn] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
-    // Detect iOS
     const userAgent = window.navigator.userAgent.toLowerCase();
     const ios = /iphone|ipad|ipod/.test(userAgent);
+    const android = /android/.test(userAgent);
+    
     setIsIOS(ios);
+    setIsAndroid(android);
 
     // Detect if already installed
     const standalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
     setIsStandalone(standalone);
-
-    const handler = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setShowInstallBtn(true);
-    };
-
-    window.addEventListener('beforeinstallprompt', handler);
-    return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
-      setShowInstallBtn(false);
-    }
-  };
 
   const openWhatsApp = () => window.open(BUSINESS.whatsapp, '_blank');
   const openInstagram = () => window.open(BUSINESS.instagram, '_blank');
@@ -145,15 +127,21 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
         </div>
       )}
 
-      {/* PWA Install Button (Android/Desktop) */}
-      {showInstallBtn && (
-        <button 
-          onClick={handleInstallClick}
-          className="w-full max-w-sm mb-10 bg-pink-500 text-white py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-pink-500/20 active:scale-95 transition-all duration-300 group"
-        >
-          <Download size={20} className="group-hover:bounce" />
-          <span className="text-[11px] font-black uppercase tracking-[0.2em]">Instalar Aplicativo</span>
-        </button>
+      {/* Android Install Instruction */}
+      {isAndroid && !isStandalone && (
+        <div className="w-full max-w-sm mb-10 bg-white/80 backdrop-blur-md border border-pink-100 p-6 rounded-3xl shadow-xl shadow-pink-500/5 animate-bounce-subtle">
+          <div className="flex items-start gap-4">
+            <div className="bg-pink-50 p-3 rounded-2xl text-pink-500">
+              <Download size={24} />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-[13px] font-black uppercase tracking-wider text-gray-800 mb-2">Instalar no Android</h3>
+              <p className="text-[11px] text-gray-500 leading-relaxed font-medium">
+                Toque nos <span className="font-bold text-pink-500">3 pontinhos</span> no topo e selecione <span className="font-bold text-pink-500">"Adicionar à tela de início"</span>.
+              </p>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Circle Logo with Charcoal Background and Contained Shine Effect */}
