@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Marmitaria Ventura | Comida Caseira e Marmitas em Samambaia DF</title>
+  <meta name="description" content="A melhor marmitaria de Samambaia DF. Comida caseira de qualidade, delivery rápido e retirada na loja. Peça seu almoço pelo WhatsApp. Aberto Seg-Sex, 9h às 13h30.">
+  <meta name="keywords" content="marmitaria samambaia, marmita samambaia df, comida caseira samambaia, almoço delivery samambaia, quentinha samambaia, marmitaria ventura">
+  <meta name="author" content="Marmitaria Ventura">
+  
+  <!-- PWA / Mobile App -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Ventura">
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
+  <link rel="icon" type="image/webp" href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marmitariaventura.com.br/">
+  <meta property="og:title" content="Marmitaria Ventura | Comida Caseira em Samambaia DF">
+  <meta property="og:description" content="Peça a melhor marmita de Samambaia Sul. Sabor caseiro, entrega rápida e retirada na loja.">
+  <meta property="og:image" content="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Marmitaria Ventura | Comida Caseira em Samambaia DF">
+  <meta property="twitter:description" content="Peça a melhor marmita de Samambaia Sul. Sabor caseiro, entrega rápida e retirada na loja.">
+  <meta property="twitter:image" content="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Marmitaria Ventura",
+      "image": "https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp",
+      "url": "https://marmitariaventura.com.br/",
+      "telephone": "+5561984623675",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "QS 106 conjunto 2 lote 01 loja 02",
+        "addressLocality": "Samambaia Sul",
+        "addressRegion": "DF",
+        "postalCode": "72302-510",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -15.8821,
+        "longitude": -48.0828
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "13:30"
+      },
+      "servesCuisine": "Brazilian",
+      "priceRange": "$",
+      "hasMenu": "https://pedido.anota.ai/loja/marmitaria-ventura?f=msa",
+      "acceptsReservations": "false"
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Fundo Mesh Glass Profissional */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffaf8 100%);
+      overflow: hidden;
+    }
+
+    /* Grão de Ruído para efeito Premium */
+    .bg-mesh::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .bg-blob {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    .blob-pink {
+      background: #ffedd5; /* Lighter Orange */
+      top: -200px;
+      right: -100px;
+      animation: float 25s infinite alternate;
+    }
+
+    .blob-orange {
+      background: #fce7f3; /* Lighter Pink */
+      bottom: -200px;
+      left: -100px;
+      animation: float 30s infinite alternate-reverse;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 80px) scale(1.2); }
+    }
+
+    /* Animação de Brilho na Logo */
+    @keyframes shine {
+      0% { transform: translateX(-150%) skewX(-30deg); }
+      20% { transform: translateX(250%) skewX(-30deg); }
+      100% { transform: translateX(250%) skewX(-30deg); }
+    }
+    .shine-overlay {
+      position: absolute;
+      top: 0;
+      width: 80px;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      z-index: 20;
+      animation: shine 4s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .group-hover\:bounce {
+      animation: bounce 0.6s infinite ease-in-out;
+    }
+
+    .tile-shadow {
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+    }
+
+    .tile-active {
+      backface-visibility: hidden;
+      -webkit-font-smoothing: antialiased;
+      transform-style: preserve-3d;
+    }
+
+    .tile-active:active {
+      transform: scale(0.96);
+      filter: brightness(1.2);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="bg-mesh">
+    <div class="bg-blob blob-pink"></div>
+    <div class="bg-blob blob-orange"></div>
+  </div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

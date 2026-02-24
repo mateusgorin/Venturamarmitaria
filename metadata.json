@@ -1,0 +1,7 @@
+{
+  "name": "Marmitaria Ventura",
+  "description": "Marmitaria Ventura em Samambaia DF. Comida caseira de qualidade, delivery de almoço e marmitas. Peça agora pelo WhatsApp!",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
