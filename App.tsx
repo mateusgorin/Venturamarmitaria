@@ -113,7 +113,7 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
   const openMaps = () => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS.address)}`, '_blank');
 
   return (
-    <div className="flex flex-col items-center min-h-screen px-8 pt-6 pb-12 fade-in">
+    <div className="flex flex-col items-center min-h-screen px-8 pb-12 fade-in" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}>
       {/* PWA Install Button */}
       {showInstallBtn && (
         <button 
