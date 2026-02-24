@@ -203,9 +203,10 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
 
       {/* Footer Branding */}
       <div className="mt-auto text-center py-4 px-4">
-        <p className="text-[8px] text-gray-500 font-bold uppercase tracking-[0.1em] mb-4">
-          Marmitaria Ventura - Marmita da Lu - CNPJ 30.278.268/0001-50
-        </p>
+        <div className="text-[8px] text-gray-500 font-bold uppercase tracking-[0.1em] mb-4 leading-relaxed">
+          <p>Marmitaria Ventura - Marmita da Lu</p>
+          <p>CNPJ 30.278.268/0001-50</p>
+        </div>
         <p className="text-[9px] text-gray-500 font-bold uppercase tracking-[0.25em] mb-1">Desenvolvido por</p>
         <a 
           href="https://www.gorinsolucoes.com.br" 

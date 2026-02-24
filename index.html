@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#fffaf8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Ventura">
+  <meta name="apple-mobile-web-app-title" content="Marmitaria Ventura">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
   <link rel="icon" type="image/webp" href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
   
@@ -80,10 +80,16 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
-      background-color: #ffffff;
+      background: linear-gradient(to bottom, #fffaf8 0%, #fffaf8 15%, #ffffff 100%);
+      background-attachment: fixed;
       color: #1a1a1a;
       overflow-x: hidden;
       min-height: 100vh;
+      margin: 0;
+    }
+
+    html {
+      background: #fffaf8;
     }
 
     /* Fundo Mesh Glass Profissional */
@@ -91,7 +97,7 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(to bottom, #fffaf8 0%, #ffffff 100%);
+      pointer-events: none;
       overflow: hidden;
     }
 
