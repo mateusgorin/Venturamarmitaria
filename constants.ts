@@ -7,6 +7,8 @@ export const BUSINESS: BusinessInfo = {
   phone: "61984623675",
   whatsapp: "https://wa.me/5561984623675",
   instagram: "https://www.instagram.com/marmitariaventura",
+  mapsUrl: "https://goo.gl/maps/nT5p93cqEkas3gcv8",
   orderUrl: "https://pedido.anota.ai/loja/marmitaria-ventura?f=msa",
-  logoUrl: "https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp"
+  logoUrl: "https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp",
+  mapsUrl: "https://goo.gl/maps/nT5p93cqEkas3gcv8"
 };

@@ -121,7 +121,7 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
 
   const openWhatsApp = () => window.open(BUSINESS.whatsapp, '_blank');
   const openInstagram = () => window.open(BUSINESS.instagram, '_blank');
-  const openMaps = () => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS.address)}`, '_blank');
+  const openMaps = () => window.open(BUSINESS.mapsUrl, '_blank');
 
   return (
     <div className="flex flex-col items-center min-h-screen px-8 pb-12 fade-in" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}>

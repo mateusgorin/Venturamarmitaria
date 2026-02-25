@@ -13,4 +13,5 @@ export interface BusinessInfo {
   instagram: string;
   orderUrl: string;
   logoUrl: string;
+  mapsUrl: string;
 }
