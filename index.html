@@ -10,12 +10,11 @@
   <meta name="author" content="Marmitaria Ventura">
   
   <!-- PWA / Mobile App -->
-  <link rel="manifest" href="/app.webmanifest?v=10">
+  <link rel="manifest" href="/clean.webmanifest">
   <meta name="theme-color" content="#fffaf8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Marmitaria Ventura">
-  <link rel="icon" type="image/webp" href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -79,8 +78,7 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
-      background: linear-gradient(to bottom, #fffaf8 0%, #fffaf8 15%, #ffffff 100%);
-      background-attachment: fixed;
+      background: #fffaf8;
       color: #1a1a1a;
       overflow-x: hidden;
       min-height: 100vh;
@@ -124,14 +122,12 @@
       background: #ffedd5; /* Lighter Orange */
       top: -200px;
       right: -100px;
-      animation: float 25s infinite alternate;
     }
 
     .blob-orange {
       background: #fce7f3; /* Lighter Pink */
       bottom: -200px;
       left: -100px;
-      animation: float 30s infinite alternate-reverse;
     }
 
     @keyframes float {
@@ -174,8 +170,8 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes bounce {
