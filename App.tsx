@@ -277,6 +277,14 @@ const OrderScreen: React.FC<{ onBack: () => void }> = ({ onBack }) => (
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.HOME);
 
+  useEffect(() => {
+    // Hide splash screen when app is ready
+    const timer = setTimeout(() => {
+      document.body.classList.add('app-ready');
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       {activeTab === Tab.HOME && (
