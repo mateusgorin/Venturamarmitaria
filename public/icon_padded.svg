@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Fundo que combina com a Splash Screen -->
+  <rect width="512" height="512" fill="#fffaf8"/>
+  <!-- Sua logo centralizada e reduzida para não ficar gigante no Android -->
+  <image href="https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp" x="156" y="156" width="200" height="200"/>
+</svg>
