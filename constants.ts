@@ -9,6 +9,5 @@ export const BUSINESS: BusinessInfo = {
   instagram: "https://www.instagram.com/marmitariaventura",
   mapsUrl: "https://goo.gl/maps/nT5p93cqEkas3gcv8",
   orderUrl: "https://pedido.anota.ai/loja/marmitaria-ventura?f=msa",
-  logoUrl: "https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp",
-  mapsUrl: "https://goo.gl/maps/nT5p93cqEkas3gcv8"
+  logoUrl: "https://i.postimg.cc/YCNtJQ1p/marmitariaventura-20260208-0003.webp"
 };

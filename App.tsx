@@ -124,7 +124,7 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
   const openMaps = () => window.open(BUSINESS.mapsUrl, '_blank');
 
   return (
-    <div className="flex flex-col items-center min-h-screen px-8 pb-12 fade-in" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}>
+    <div className="flex flex-col items-center min-h-screen px-8 pb-12 pt-8">
       {/* iOS Install Instruction */}
       {isIOS && !isStandalone && (
         <div className="w-full max-w-sm mb-10 bg-white/80 backdrop-blur-md border border-pink-100 p-6 rounded-3xl shadow-xl shadow-pink-500/5 animate-bounce-subtle">

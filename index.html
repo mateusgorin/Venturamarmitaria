@@ -10,7 +10,7 @@
   <meta name="author" content="Marmitaria Ventura">
   
   <!-- PWA / Mobile App -->
-  <link rel="manifest" href="/clean.webmanifest">
+  <link rel="manifest" href="/final.webmanifest">
   <meta name="theme-color" content="#fffaf8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -81,80 +81,18 @@
       background: #fffaf8;
       color: #1a1a1a;
       overflow-x: hidden;
-      min-height: 100vh;
       margin: 0;
+      padding: 0;
+    }
+
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     html {
       background: #fffaf8;
-    }
-
-    /* Fundo Mesh Glass Profissional */
-    .bg-mesh {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    /* Grão de Ruído para efeito Premium */
-    .bg-mesh::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.03;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    .bg-blob {
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.25;
-      z-index: -1;
-    }
-
-    .blob-pink {
-      background: #ffedd5; /* Lighter Orange */
-      top: -200px;
-      right: -100px;
-    }
-
-    .blob-orange {
-      background: #fce7f3; /* Lighter Pink */
-      bottom: -200px;
-      left: -100px;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(100px, 80px) scale(1.2); }
-    }
-
-    /* Animação de Brilho na Logo */
-    @keyframes shine {
-      0% { transform: translateX(-150%) skewX(-30deg); }
-      20% { transform: translateX(250%) skewX(-30deg); }
-      100% { transform: translateX(250%) skewX(-30deg); }
-    }
-    .shine-overlay {
-      position: absolute;
-      top: 0;
-      width: 80px;
-      height: 100%;
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-      );
-      z-index: 20;
-      animation: shine 4s infinite ease-in-out;
-      pointer-events: none;
     }
 
     .font-serif {
@@ -166,12 +104,7 @@
     }
 
     .fade-in {
-      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      opacity: 1;
     }
 
     @keyframes bounce {
@@ -220,10 +153,6 @@
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-  <div class="bg-mesh">
-    <div class="bg-blob blob-pink"></div>
-    <div class="bg-blob blob-orange"></div>
-  </div>
   <div id="root"></div>
 <script type="module" src="/index.tsx"></script>
 </body>
