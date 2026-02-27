@@ -2,7 +2,7 @@
   "name": "Marmitaria Ventura",
   "short_name": "Marmitaria Ventura",
   "description": "Marmitaria Ventura em Samambaia DF. Comida caseira de qualidade.",
-  "start_url": "/?v=whatsapp_style",
+  "start_url": "/?v=native_splash",
   "display": "standalone",
   "background_color": "#fffaf8",
   "theme_color": "#fffaf8",

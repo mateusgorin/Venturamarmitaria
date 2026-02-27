@@ -47,9 +47,9 @@ const OpenStatus: React.FC = () => {
       const min = now.getMinutes();
       const currentTime = hour + min / 60;
       
-      // Business Hours: Mon-Fri, 09:00 - 13:30
+      // Business Hours: Mon-Fri, 09:00 - 13:50
       const isWeekday = day >= 1 && day <= 5;
-      const isWorkingHours = currentTime >= 9 && currentTime <= 13.5;
+      const isWorkingHours = currentTime >= 9 && currentTime <= 13.833; // 13:50 is 13 + 50/60
       setIsOpen(isWeekday && isWorkingHours);
     };
 
@@ -59,7 +59,7 @@ const OpenStatus: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-3 mb-6 animate-in fade-in duration-1000">
+    <div className="flex flex-col items-center gap-3 mb-6">
       <div className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all duration-700 backdrop-blur-xl ${
         isOpen 
           ? 'bg-green-50/40 border-green-200/50 text-green-600 shadow-[0_0_25px_rgba(34,197,94,0.1)]' 
@@ -76,7 +76,7 @@ const OpenStatus: React.FC = () => {
       {!isOpen && (
         <div className="flex items-center gap-1.5 text-[9px] font-bold text-gray-400/70 uppercase tracking-widest">
           <Clock size={10} />
-          <span>Seg a Sex • 09:00 às 13:30</span>
+          <span>Seg a Sex • 09:00 às 13:50</span>
         </div>
       )}
     </div>
@@ -276,14 +276,6 @@ const OrderScreen: React.FC<{ onBack: () => void }> = ({ onBack }) => (
 // Main Controller
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.HOME);
-
-  useEffect(() => {
-    // Hide splash screen when app is ready
-    const timer = setTimeout(() => {
-      document.body.classList.add('app-ready');
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="min-h-screen relative">
