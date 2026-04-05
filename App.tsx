@@ -25,13 +25,13 @@ const ActionTile: React.FC<{
 }> = ({ icon, title, subtitle, onClick }) => (
   <button 
     onClick={onClick}
-    className="group tile-active aspect-square bg-[#1f2937]/95 rounded-[40px] flex flex-col items-center justify-center text-center p-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] tile-shadow border border-white/10 hover:scale-[1.04] hover:bg-[#2d3748] hover:border-white/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] will-change-transform transform-gpu"
+    className="group tile-active aspect-square bg-[#1f2937]/95 rounded-[36px] lg:rounded-[44px] flex flex-col items-center justify-center text-center p-3.5 lg:p-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] tile-shadow border border-white/10 hover:scale-[1.04] hover:bg-[#2d3748] hover:border-white/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] will-change-transform transform-gpu"
   >
-    <div className="text-white mb-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 will-change-transform">
+    <div className="text-white mb-2.5 lg:mb-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 will-change-transform">
       {icon}
     </div>
-    <span className="text-white font-extrabold text-[12px] tracking-[0.1em] mb-1">{title}</span>
-    <span className="text-gray-400 text-[9px] font-semibold tracking-wider uppercase transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-gray-300">{subtitle}</span>
+    <span className="text-white font-extrabold text-[11px] lg:text-[13px] tracking-[0.1em] mb-1">{title}</span>
+    <span className="text-gray-400 text-[8px] lg:text-[9px] font-semibold tracking-wider uppercase transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-gray-300">{subtitle}</span>
   </button>
 );
 
@@ -124,128 +124,133 @@ const HomeScreen: React.FC<{ onTabChange: (tab: Tab) => void }> = ({ onTabChange
   const openMaps = () => window.open(BUSINESS.mapsUrl, '_blank');
 
   return (
-    <div className="flex flex-col items-center min-h-screen px-8 pb-12 pt-12">
-      {/* iOS Install Instruction */}
-      {isIOS && !isStandalone && (
-        <div className="w-full max-w-sm mb-10 bg-white/80 backdrop-blur-md border border-pink-100 p-6 rounded-3xl shadow-xl shadow-pink-500/5 animate-bounce-subtle">
-          <div className="flex items-start gap-4">
-            <div className="bg-pink-50 p-3 rounded-2xl text-pink-500">
-              <Download size={24} />
+    <div className="flex flex-col items-center min-h-screen px-8 pb-12 pt-12 lg:max-w-6xl lg:mx-auto lg:pt-20">
+      
+      <div className="flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:gap-24 lg:w-full">
+        {/* Left Column: Brand & Logo */}
+        <div className="flex flex-col items-center lg:w-2/5">
+          {/* iOS Install Instruction */}
+          {isIOS && !isStandalone && (
+            <div className="w-full max-w-sm mb-10 bg-white/80 backdrop-blur-md border border-pink-100 p-6 rounded-3xl shadow-xl shadow-pink-500/5 animate-bounce-subtle">
+              <div className="flex items-start gap-4">
+                <div className="bg-pink-50 p-3 rounded-2xl text-pink-500">
+                  <Download size={24} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-[13px] font-black uppercase tracking-wider text-gray-800 mb-2">Instalar no iPhone</h3>
+                  <p className="text-[11px] text-gray-500 leading-relaxed font-medium">
+                    Toque no ícone <span className="inline-flex items-center mx-1 text-pink-500"><Share size={14} /></span> 
+                    depois em <span className="inline-flex items-center mx-1 text-pink-500"><PlusSquare size={14} /></span> 
+                    <span className="font-bold">"Adicionar à Tela de Início"</span> para ter o app.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="flex-1">
-              <h3 className="text-[13px] font-black uppercase tracking-wider text-gray-800 mb-2">Instalar no iPhone</h3>
-              <p className="text-[11px] text-gray-500 leading-relaxed font-medium">
-                Toque no ícone <span className="inline-flex items-center mx-1 text-pink-500"><Share size={14} /></span> 
-                depois em <span className="inline-flex items-center mx-1 text-pink-500"><PlusSquare size={14} /></span> 
-                <span className="font-bold">"Adicionar à Tela de Início"</span> para ter o app.
-              </p>
+          )}
+
+          {/* PWA Install Button (Android/Desktop) */}
+          {showInstallBtn && (
+            <button 
+              onClick={handleInstallClick}
+              className="w-full max-w-sm mb-10 bg-pink-500 text-white py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-pink-500/20 active:scale-95 transition-all duration-300 group"
+            >
+              <Download size={20} className="group-hover:bounce" />
+              <span className="text-[11px] font-black uppercase tracking-[0.2em]">Instalar Aplicativo</span>
+            </button>
+          )}
+
+          {/* Circle Logo */}
+          <div className="relative mb-10 lg:mb-12">
+            <div className="w-56 h-56 lg:w-64 lg:h-64 rounded-full border-[8px] border-white shadow-[0_30px_60px_-12px_rgba(0,0,0,0.2)] flex items-center justify-center bg-[#1f2937] group transition-transform duration-700 hover:scale-105 overflow-hidden">
+              <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center">
+                <img 
+                  src={BUSINESS.logoUrl} 
+                  alt="Logo Marmitaria Ventura" 
+                  className="w-full h-full object-cover scale-110 transition-transform duration-1000 group-hover:scale-125"
+                />
+                <div className="shine-overlay" />
+              </div>
+            </div>
+          </div>
+
+          {/* Brand Header */}
+          <div className="text-center w-full max-w-xs relative">
+            <h1 className="font-serif font-normal text-[76px] lg:text-[84px] text-[#0f172a] leading-none mb-1 drop-shadow-sm select-none">Ventura</h1>
+            <h2 className="text-[#ec4899] font-black text-[13px] lg:text-[15px] tracking-[0.45em] uppercase mb-5 opacity-100 select-none">Marmitaria</h2>
+            
+            <OpenStatus />
+
+            <p className="text-gray-500 text-[10px] lg:text-[12px] font-bold tracking-[0.3em] uppercase mb-8 lg:mb-10 select-none">Comida caseira de qualidade</p>
+
+            {/* Branding Info */}
+            <div className="text-center w-full">
+              <div className="text-[8px] lg:text-[10px] text-gray-400 font-bold uppercase tracking-[0.1em] mb-4 leading-relaxed">
+                <p>Marmitaria Ventura - Marmita da Lu</p>
+                <p>CNPJ 30.278.268/0001-50</p>
+              </div>
+              <p className="text-[9px] lg:text-[11px] text-gray-400 font-bold uppercase tracking-[0.25em] mb-1">Desenvolvido por</p>
+              <a 
+                href="https://www.gorinsolucoes.com.br" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[11px] lg:text-[13px] text-gray-500 font-extrabold tracking-widest uppercase hover:text-pink-400/80 transition-colors duration-300"
+              >
+                Gorin Soluções
+              </a>
             </div>
           </div>
         </div>
-      )}
 
-      {/* PWA Install Button (Android/Desktop) */}
-      {showInstallBtn && (
-        <button 
-          onClick={handleInstallClick}
-          className="w-full max-w-sm mb-10 bg-pink-500 text-white py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-pink-500/20 active:scale-95 transition-all duration-300 group"
-        >
-          <Download size={20} className="group-hover:bounce" />
-          <span className="text-[11px] font-black uppercase tracking-[0.2em]">Instalar Aplicativo</span>
-        </button>
-      )}
-
-      {/* Circle Logo with Charcoal Background and Contained Shine Effect */}
-      <div className="relative mb-10">
-        {/* Contêiner da Borda (Cor original branca) e Sombra */}
-        <div className="w-56 h-56 rounded-full border-[8px] border-white shadow-[0_30px_60px_-12px_rgba(0,0,0,0.2)] flex items-center justify-center bg-[#1f2937] group transition-transform duration-700 hover:scale-105 overflow-hidden">
-          {/* Contêiner Interno de Recorte para o Brilho */}
-          <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center">
-            <img 
-              src={BUSINESS.logoUrl} 
-              alt="Logo Marmitaria Ventura - Comida Caseira em Samambaia DF" 
-              className="w-full h-full object-cover scale-110 transition-transform duration-1000 group-hover:scale-125"
+        {/* Right Column: Actions & Info */}
+        <div className="flex flex-col items-center lg:items-start lg:w-3/5">
+          {/* Action Grid */}
+          <div className="grid grid-cols-2 gap-5 lg:gap-7 w-full max-w-[345px] lg:max-w-[460px] mb-14 lg:mb-10">
+            <ActionTile 
+              icon={<ShoppingBag className="w-7 h-7 lg:w-11 lg:h-11" strokeWidth={1.5} />} 
+              title="CARDÁPIO" 
+              subtitle="FAZER PEDIDO" 
+              onClick={() => onTabChange(Tab.MENU)} 
             />
-            {/* Efeito de Brilho Recortado pelo overflow-hidden do pai */}
-            <div className="shine-overlay" />
+            <ActionTile 
+              icon={<Phone className="w-7 h-7 lg:w-11 lg:h-11" strokeWidth={1.5} />} 
+              title="WHATSAPP" 
+              subtitle="FALE CONOSCO" 
+              onClick={openWhatsApp} 
+            />
+            <ActionTile 
+              icon={<Instagram className="w-7 h-7 lg:w-11 lg:h-11" strokeWidth={1.5} />} 
+              title="INSTAGRAM" 
+              subtitle="SIGA-NOS" 
+              onClick={openInstagram} 
+            />
+            <ActionTile 
+              icon={<MapPin className="w-7 h-7 lg:w-11 lg:h-11" strokeWidth={1.5} />} 
+              title="ENDEREÇO" 
+              subtitle="COMO CHEGAR" 
+              onClick={openMaps} 
+            />
+          </div>
+
+          {/* Business Info Section */}
+          <div className="w-full max-w-sm lg:max-w-xl flex flex-col gap-6 mb-16 lg:mb-0 px-4 lg:px-0">
+            <div className="h-px bg-black/5 w-full" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
+              {[
+                { icon: "📍", text: "Samambaia, DF" },
+                { icon: "🥡", text: "Take away, retirada na loja" },
+                { icon: "🛵", text: "Delivery disponível" },
+                { icon: "🕘", text: "Atendimento: segunda a sexta, das 9h às 13h30" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4 group">
+                  <span className="text-xl lg:text-2xl transition-transform duration-500 group-hover:scale-110">{item.icon}</span>
+                  <span className="text-[10px] lg:text-[11px] font-bold text-gray-600 uppercase tracking-[0.2em] leading-relaxed">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Brand Header */}
-      <div className="text-center w-full max-w-xs relative">
-        <h1 className="font-serif font-normal text-[76px] text-[#0f172a] leading-none mb-1 drop-shadow-sm select-none">Ventura</h1>
-        <h2 className="text-[#ec4899] font-black text-[13px] tracking-[0.45em] uppercase mb-5 opacity-100 select-none">Marmitaria</h2>
-        
-        {/* Animated Status */}
-        <OpenStatus />
-
-        <p className="text-gray-500 text-[10px] font-bold tracking-[0.3em] uppercase mb-12 select-none">Comida caseira de qualidade</p>
-      </div>
-
-      {/* Action Grid */}
-      <div className="grid grid-cols-2 gap-6 w-full max-w-sm mb-16">
-        <ActionTile 
-          icon={<ShoppingBag size={34} strokeWidth={1.5} />} 
-          title="CARDÁPIO" 
-          subtitle="FAZER PEDIDO" 
-          onClick={() => onTabChange(Tab.MENU)} 
-        />
-        <ActionTile 
-          icon={<Phone size={34} strokeWidth={1.5} />} 
-          title="WHATSAPP" 
-          subtitle="FALE CONOSCO" 
-          onClick={openWhatsApp} 
-        />
-        <ActionTile 
-          icon={<Instagram size={34} strokeWidth={1.5} />} 
-          title="INSTAGRAM" 
-          subtitle="SIGA-NOS" 
-          onClick={openInstagram} 
-        />
-        <ActionTile 
-          icon={<MapPin size={34} strokeWidth={1.5} />} 
-          title="ENDEREÇO" 
-          subtitle="COMO CHEGAR" 
-          onClick={openMaps} 
-        />
-      </div>
-
-      {/* Business Info Section */}
-      <div className="w-full max-w-xs flex flex-col gap-6 mb-16 px-4">
-        <div className="h-px bg-black/5 w-full" />
-        <div className="grid grid-cols-1 gap-4">
-          {[
-            { icon: "📍", text: "Samambaia, DF" },
-            { icon: "🥡", text: "Take away, retirada na loja" },
-            { icon: "🛵", text: "Delivery disponível" },
-            { icon: "🕘", text: "Atendimento: segunda a sexta, das 9h às 13h30" }
-          ].map((item, i) => (
-            <div key={i} className="flex items-center gap-4 group">
-              <span className="text-xl transition-transform duration-500 group-hover:scale-110">{item.icon}</span>
-              <span className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.2em] leading-relaxed">
-                {item.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Footer Branding */}
-      <div className="mt-auto text-center py-4 px-4">
-        <div className="text-[8px] text-gray-500 font-bold uppercase tracking-[0.1em] mb-4 leading-relaxed">
-          <p>Marmitaria Ventura - Marmita da Lu</p>
-          <p>CNPJ 30.278.268/0001-50</p>
-        </div>
-        <p className="text-[9px] text-gray-500 font-bold uppercase tracking-[0.25em] mb-1">Desenvolvido por</p>
-        <a 
-          href="https://www.gorinsolucoes.com.br" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-[11px] text-gray-600 font-extrabold tracking-widest uppercase hover:text-pink-400/80 transition-colors duration-300"
-        >
-          Gorin Soluções
-        </a>
       </div>
     </div>
   );
